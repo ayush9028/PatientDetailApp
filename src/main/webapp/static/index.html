@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mednet Assignment</title>
+    <link rel="stylesheet" href="static/style.css">
+
+
+    <!-- Only include DWR if Tab 4 is ever needed from here -->
+    <script src="/PatientDetailSpringMVC_war/dwr/engine.js"></script>
+    <script src="/PatientDetailSpringMVC_war/dwr/util.js"></script>
+    <script src="/PatientDetailSpringMVC_war/dwr/interface/PrefixService.js"></script>
+
+
+    <!-- Example Ext JS include (update the path to your ext-all.js) -->
+
+    <script src="https://cdn.sencha.com/ext/gpl/7.4.0/build/ext-all.js"></script>
+    <link rel="stylesheet" href="https://cdn.sencha.com/ext/gpl/7.4.0/build/classic/theme-triton/resources/theme-triton-all.css">
+</head>
+
+
+
+
+
+
+
+</head>
+<body>
+<h1>Hospital Management System</h1>
+
+<!-- Tab Buttons -->
+<div class="tabs">
+    <button class="tab-button" onclick="showTab(1)">Dropdowns</button>
+    <button class="tab-button" onclick="showTab(2)">Popup Editor</button>
+    <button class="tab-button" onclick="showTab(3)">List + Search</button>
+    <button class="tab-button" onclick="showTab(4)">Entry CRUD</button>
+    <button class="tab-button" onclick="showTab(5)">Excel</button>
+    <button class="tab-button" onclick="showTab(6)">Web Service CRUD</button>
+    <button class="tab-button" onclick="showTab(7)">PDF Gen</button>
+
+</div>
+
+<!-- Tab 1 -->
+<div id="tab-1" class="tab-content">
+    <h2>Tab 1: Dropdowns</h2>
+    <div class="dropdown-row">
+        <div class="dropdown-box">
+            <label for="htmlDropdown">Departments :</label>
+            <select id="htmlDropdown">
+                <option disabled selected>Select</option>
+                <option>IT</option>
+                <option>Accounts</option>
+                <option>Human Resources</option>
+                <option>Management</option>
+            </select>
+        </div>
+
+        <br><br>
+
+        <div class="dropdown-box">
+            <label for="extjsDropdown">Static Value :</label>
+            <select id="extjsDropdown">
+                <option disabled selected>Select</option>
+                <option>Value 1</option>
+                <option>Value 2</option>
+                <option>Value 3</option>
+
+            </select>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+<!-- Tab 2 -->
+<div id="tab-2" class="tab-content">
+    <button onclick="openPopup()">Patient Details</button>
+
+    <div id="popup" class="popup-card">
+        <div class="popup-header">Patient Details</div>
+        <div class="popup-body">
+            <table class="details-table">
+                <tr><td>Name</td><td>: <span id="nameField">CT SCAN</span></td></tr>
+                <tr><td>MRN</td><td>: <span id="mrnField">CYTOLOGY</span></td></tr>
+                <tr><td>Date Of Birth</td><td>: <span id="dobField">DIGITAL X-RAY</span></td></tr>
+                <tr><td>Age</td><td>: <span id="ageField">FLUID EXAM</span></td></tr>
+                <tr><td>Gender</td><td>: <span id="genderField">GASTROENTEROLOGY INVESTIGATION</span></td></tr>
+                <tr><td>Address</td><td>: <span id="addressField">HAEMATOLOGY</span></td></tr>
+                <tr><td>Reg Date</td><td>: <span id="regDateField">HORMONES</span></td></tr>
+                <tr><td>Status</td><td>: <span id="statusField">HISTOPATHOLOGY</span></td></tr>
+            </table>
+
+            <br>
+            <label><b>Text Editor</b></label><br>
+
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <button onclick="format('bold')"><b>B</b></button>
+                <button onclick="format('italic')"><i>I</i></button>
+                <button onclick="format('underline')"><u>U</u></button>
+                <button onclick="format('justifyLeft')">⯇</button>
+                <button onclick="format('justifyCenter')">⇔</button>
+                <button onclick="format('justifyRight')">⯈</button>
+                <button onclick="format('justifyFull')">☰</button>
+            </div>
+
+            <!-- Editor -->
+            <div id="textEditor" contenteditable="true" style="border:1px solid #ccc; min-height:100px; padding:5px;"></div>
+
+            <br>
+            <button onclick="updateDetails()">Update</button>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Tab 3 -->
+<div id="tab-3" class="tab-content">
+    <h2>Tab 3: List + Search</h2>
+
+    <input type="text" id="searchInput" placeholder="Search by name..." />
+
+    <table border="1" style="margin-top: 10px; width: 100%; border-collapse: collapse;">
+        <thead>
+        <tr>
+            <th style="padding: 8px;">Name</th>
+            <th style="padding: 8px;">Age</th>
+            <th style="padding: 8px;">Gender</th>
+        </tr>
+        </thead>
+        <tbody id="patientTableBody">
+        <!-- Data will be populated here -->
+        </tbody>
+    </table>
+
+    <div id="pagination" style="margin-top: 10px;"></div>
+</div>
+
+<!-- Tab 4 -->
+<div id="tab-4" class="tab-content">
+    <h2>Tab 4: Prefix List</h2>
+
+    <label>Code: </label>
+    <input type="text" id="code" />
+    <label>Description: </label>
+    <input type="text" id="desc" />
+    <button onclick="savePrefix()">Save</button>
+
+    <h3>Prefix List</h3>
+    <table border="1" id="prefixTable" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Code</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Populated dynamically -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Tab 5 -->
+<div id="tab-5" class="tab-content" style="display: none;">
+    <h2>Tab 5: Excel Upload / Download</h2>
+
+    <!-- Upload Excel -->
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload Excel</button>
+    </form>
+
+    <!-- Download Excel -->
+    <br>
+    <button onclick="downloadExcel()">Download Excel</button>
+</div>
+
+<!-- Tab 6 -->
+<div id="tab-6" class="tab-content" style="display: none;">
+    <h2>Tab 6: Web Service CRUD (Label)</h2>
+
+    <!-- Hidden field for update ID -->
+    <input type="hidden" id="labelIdInput">
+
+    <label>Label Code:</label>
+    <input type="text" id="labelCodeInput">
+
+    <label>Label Description:</label>
+    <input type="text" id="labelDescInput">
+
+    <button id="saveBtn" onclick="createLabel()">Save</button>
+    <button id="updateBtn" onclick="updateLabel()" style="display:none;">Update</button>
+
+    <h3>Label List</h3>
+    <table border="1" id="labelTable" style="width:100%; margin-top:10px;">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Code</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- List will be populated here -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Tab7-- -->
+
+<!-- Tab 7 -->
+<div id="tab7" class="tab-content" style="display: none;">
+    <h2>Tab 7: Puppeteer PDF Generator</h2>
+    <button id="generatePdfBtn">Generate PDF</button>
+</div>
+
+
+
+<script>
+    console.log("Inline script running");
+    window.downloadExcel = function() {
+        console.log("downloadExcel called");
+        window.location.href = "/PatientDetailSpringMVC_war/tab5/download";
+    };
+
+
+
+
+</script>
+
+
+
+
+<script src="/PatientDetailSpringMVC_war/static/script.js"></script>
+
+
+</body>
+</html>

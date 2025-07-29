@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.directwebremoting.org/schema/spring-dwr
+           http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
+
+    <!-- Enable component scanning -->
+    <context:component-scan base-package="com.example" />
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+
+    <!-- Enable annotation-based MVC -->
+    <mvc:annotation-driven />
+
+    <!-- Serve static resources like .html, .css, .js -->
+    <mvc:resources mapping="/static/**" location="/static/" />
+
+    <!-- JSP view resolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!-- Enable DWR annotation support -->
+    <dwr:annotation-config />
+
+    <!-- DWR controller for serving engine.js, util.js, and JavaScript interfaces -->
+    <dwr:controller id="dwrController" debug="true">
+        <dwr:config-param name="crossDomainSessionSecurity" value="false"/>
+    </dwr:controller>
+
+    <!-- Enables default DWR URL mapping (/dwr/...) -->
+    <dwr:url-mapping/>
+
+
+
+
+</beans>

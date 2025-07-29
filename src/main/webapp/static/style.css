@@ -1,0 +1,174 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    background: #f0f2f5;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.tabs {
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 10px 16px;
+    margin-right: 5px;
+    background: #ddd; /* Default grey */
+    border: none;
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: black; /* Ensure black text */
+    opacity: 1; /* Remove any fading */
+}
+
+.tab-button.active {
+    background: #f8b407; /* Yellow for active tab */
+    color: black;
+}
+
+.tab-button:disabled {
+    background: #ddd; /* Same as inactive for now */
+    color: black;
+    cursor: not-allowed;
+}
+
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0 4px 4px 4px;
+    margin-top: -1px;
+}
+
+.tab-content h2 {
+    margin-top: 0;
+}
+
+
+/* TAB 1: Dropdown Styling */
+.dropdown-row {
+    display: flex;
+    gap: 60px;
+    margin-top: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.dropdown-box {
+    display: flex;
+    flex-direction: column;
+    min-width: 220px;
+}
+
+.dropdown-box label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.dropdown-box select {
+    height: 34px;
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+
+/* TAB 2: Popup Editor */
+.popup-card {
+    background: white;
+    border: 1px solid #ccc;
+    width: 500px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.details-table {
+    width: 100%;
+    margin-bottom: 15px;
+    border-collapse: collapse;
+}
+
+.details-table td {
+    padding: 6px 10px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-family: Arial;
+    margin-top: 10px;
+}
+
+.toolbar button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.rich-editor,
+#textEditor {
+    border: 1px solid #ccc;
+    min-height: 100px;
+    padding: 8px;
+    background-color: white;
+    overflow-y: auto;
+}
+
+
+/* TAB 3 + TAB 4: Table and Buttons */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.pagination button {
+    margin: 0 5px;
+    padding: 6px 12px;
+    border: none;
+    background: #eee;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background: #f8b407;
+    color: #170404;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="number"],
+input[type="date"] {
+    padding: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 7px 15px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,19 @@
+<dwr>
+    <allow>
+        <!-- Expose the Spring bean -->
+        <create creator="spring" javascript="PrefixService">
+            <param name="beanName" value="prefixService"/>
+        </create>
+
+        <!-- Tell DWR to use the BeanConverter for Prefix -->
+        <convert match="com.example.entity.Prefix" converter="bean"/>
+    </allow>
+
+    <init>
+        <param name="allowScriptTagRemoting" value="true"/>
+        <param name="activeReverseAjaxEnabled" value="true"/>
+    </init>
+
+
+</dwr>
+
