@@ -11,7 +11,7 @@
 
     <init>
         <param name="allowScriptTagRemoting" value="true"/>
-        <param name="activeReverseAjaxEnabled" value="true"/>
+
     </init>
 
 

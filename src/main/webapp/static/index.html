@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Mednet Assignment</title>
     <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🏥</text></svg>">
 
 
     <!-- Only include DWR if Tab 4 is ever needed from here -->
@@ -11,22 +12,27 @@
     <script src="/PatientDetailSpringMVC_war/dwr/util.js"></script>
     <script src="/PatientDetailSpringMVC_war/dwr/interface/PrefixService.js"></script>
 
+    <!-- core Ext JS library -->
+    <script src="static/Myapp/ext/build/ext-all.js"></script>
 
-    <!-- Example Ext JS include (update the path to your ext-all.js) -->
+    <!-- classic toolkit theme CSS -->
+    <link rel="stylesheet"
+          href="static/Myapp/build/development/Myapp/classic/resources/Myapp-all.css">
 
-    <script src="https://cdn.sencha.com/ext/gpl/7.4.0/build/ext-all.js"></script>
-    <link rel="stylesheet" href="https://cdn.sencha.com/ext/gpl/7.4.0/build/classic/theme-triton/resources/theme-triton-all.css">
+    <!-- theme runtime (needed for the little arrow icon, etc.) -->
+
+
+
+
+
+
+    <!-- Ext JS Dependencies -->
+    <!-- <script src="static/Myapp/ext/build/ext-all.js"></script> -->
+
 </head>
 
-
-
-
-
-
-
-</head>
 <body>
-<h1>Hospital Management System</h1>
+<h1>Mednet System</h1>
 
 <!-- Tab Buttons -->
 <div class="tabs">
@@ -41,37 +47,34 @@
 </div>
 
 <!-- Tab 1 -->
+
 <div id="tab-1" class="tab-content">
     <h2>Tab 1: Dropdowns</h2>
-    <div class="dropdown-row">
+
+    <div class="dropdown-row" style="display: flex; align-items: flex-start; gap: 30px;">
+
+        <!-- HTML Dropdown -->
         <div class="dropdown-box">
-            <label for="htmlDropdown">Departments :</label>
+            <label>Departments:</label>
             <select id="htmlDropdown">
-                <option disabled selected>Select</option>
+                <option>Select</option>
                 <option>IT</option>
                 <option>Accounts</option>
-                <option>Human Resources</option>
+                <option>HR</option>
                 <option>Management</option>
             </select>
         </div>
 
-        <br><br>
 
+        <!-- Ext JS Dropdown  -->
         <div class="dropdown-box">
-            <label for="extjsDropdown">Static Value :</label>
-            <select id="extjsDropdown">
-                <option disabled selected>Select</option>
-                <option>Value 1</option>
-                <option>Value 2</option>
-                <option>Value 3</option>
-
-            </select>
+            <label>Ext JS Dropdown:</label>
+            <div id="extjsDropdownContainer"></div>
         </div>
-
-
 
     </div>
 </div>
+
 
 
 

@@ -35,16 +35,15 @@ public class PrefixService {
 
     @RemoteMethod
     @Transactional
-    public String[] delete(int id) {
+    public String[] deletePrefix(int id) {  // ✅ Changed from 'delete' to 'deletePrefix'
         try {
-            helper.deleteById(id);  // ✅ Using helper layer
+            helper.deleteById(id);
             return new String[]{"success", "Deleted successfully"};
         } catch (Exception ex) {
             ex.printStackTrace();
             return new String[]{"error", "Error while deleting Prefix"};
         }
     }
-
 
 
     @RemoteMethod

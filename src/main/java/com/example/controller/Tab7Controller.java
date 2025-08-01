@@ -13,9 +13,8 @@ public class Tab7Controller {
     @GetMapping("/generate-pdf")  // Final URL: /api/tab7/generate-pdf
     public ResponseEntity<String> generatePdf() {
         try {
-            // IMPORTANT: Folder name must match exactly
-            ProcessBuilder pb = new ProcessBuilder("node", "generate-pdf.js");
-            pb.directory(new File("Puppeteer"));  // ✅ lowercase folder at root level
+            ProcessBuilder pb = new ProcessBuilder("C:\\Program Files\\nodejs\\node.exe", "generate-pdf.js");
+            pb.directory(new File("D:\\Spark 3.0\\Java\\PatientDetailSpringMVC\\Puppeteer"));  // ✅ Absolute path
             pb.redirectErrorStream(true);
 
             Process process = pb.start();

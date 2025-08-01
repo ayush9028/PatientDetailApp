@@ -40,4 +40,9 @@ public class PrefixDao {
         return result;
 
     }
+//    public List<Prefix> fetchAll() {
+//        String hql = "FROM Prefix";
+//        Query<Prefix> query = sessionFactory.getCurrentSession().createQuery(hql, Prefix.class);
+//        return query.list();
+//    }
 }
